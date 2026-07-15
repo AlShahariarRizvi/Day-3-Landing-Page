@@ -1411,6 +1411,212 @@
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
+
+    /* ── Thank You Modal ── */
+    .thankyou-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 6000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .thankyou-overlay.open { display: flex; }
+    .thankyou-box {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px 32px;
+      max-width: 380px;
+      width: 90%;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      animation: popIn .35s cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes popIn {
+      from { transform: scale(.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .thankyou-box .ty-icon {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+    }
+    .thankyou-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--maroon);
+      margin-bottom: 10px;
+    }
+    .thankyou-box p {
+      color: var(--gray-600);
+      font-size: .9rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .thankyou-box .btn-ty {
+      display: inline-block;
+      padding: 10px 28px;
+      background: var(--maroon);
+      color: var(--white);
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: .88rem;
+      border: none;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .thankyou-box .btn-ty:hover { background: var(--maroon-dark); }
+    .thankyou-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 1.4rem;
+      color: var(--gray-400);
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* ── Add-to-Cart Confirmation Card ── */
+    .cart-confirm-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      z-index: 6000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(3px);
+    }
+    .cart-confirm-overlay.open { display: flex; }
+    .cart-confirm-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 0;
+      max-width: 420px;
+      width: 92%;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      overflow: hidden;
+      animation: slideUp .4s cubic-bezier(.34,1.56,.64,1);
+      position: relative;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(40px) scale(.95); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .cart-confirm-top {
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+      padding: 24px 28px 20px;
+      text-align: center;
+      color: var(--white);
+    }
+    .cart-confirm-top .cc-check {
+      width: 52px; height: 52px;
+      background: rgba(255,255,255,.2);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    .cart-confirm-top h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+    .cart-confirm-top p {
+      font-size: .82rem;
+      opacity: .85;
+    }
+    .cart-confirm-body {
+      padding: 20px 24px 22px;
+    }
+    .cart-confirm-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .cart-confirm-item img {
+      width: 64px; height: 76px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+    }
+    .cart-confirm-item .cci-info {
+      flex: 1;
+    }
+    .cart-confirm-item .cci-name {
+      font-weight: 600;
+      font-size: .92rem;
+      color: var(--gray-900);
+      margin-bottom: 2px;
+    }
+    .cart-confirm-item .cci-cat {
+      font-size: .75rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .cart-confirm-item .cci-price {
+      font-weight: 700;
+      color: var(--maroon);
+      font-size: .95rem;
+    }
+    .cart-confirm-msg {
+      background: var(--ivory);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      font-size: .82rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .cart-confirm-msg strong { color: var(--maroon); }
+    .cart-confirm-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .cart-confirm-actions button {
+      flex: 1;
+      padding: 11px 16px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: .85rem;
+      border: none;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .cc-btn-continue {
+      background: var(--gray-100);
+      color: var(--gray-700);
+    }
+    .cc-btn-continue:hover { background: var(--gray-200); }
+    .cc-btn-checkout {
+      background: var(--jamdani-green);
+      color: var(--white);
+    }
+    .cc-btn-checkout:hover { opacity: .9; }
+    .cart-confirm-close {
+      position: absolute;
+      top: 10px; right: 14px;
+      background: rgba(255,255,255,.25);
+      color: var(--white);
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: background .2s;
+    }
+    .cart-confirm-close:hover { background: rgba(255,255,255,.4); }
   </style>
 </head>
 <body>
@@ -1740,6 +1946,47 @@
        ================================================================ -->
   <div class="toast" id="toast"></div>
 
+  <!-- Thank You Modal -->
+  <div class="thankyou-overlay" id="thankyouOverlay">
+    <div class="thankyou-box">
+      <button class="thankyou-close" id="thankyouClose">&times;</button>
+      <div class="ty-icon">🙏</div>
+      <h3>ধন্যবাদ!</h3>
+      <p>আপনার অর্ডারের জন্য অনেক অনেক ধন্যবাদ। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।<br><strong>আবার কিনতে আসবেন!</strong> 💛</p>
+      <button class="btn-ty" id="thankyouBtn">Close</button>
+    </div>
+  </div>
+
+  <!-- Add-to-Cart Confirmation -->
+  <div class="cart-confirm-overlay" id="cartConfirmOverlay">
+    <div class="cart-confirm-card">
+      <button class="cart-confirm-close" id="cartConfirmClose">&times;</button>
+      <div class="cart-confirm-top">
+        <div class="cc-check">✓</div>
+        <h3>ধন্যবাদ!</h3>
+        <p>আপনার পছন্দের পণ্যটি সফলভাবে কার্টে যোগ হয়েছে</p>
+      </div>
+      <div class="cart-confirm-body">
+        <div class="cart-confirm-item">
+          <img id="ccImg" src="" alt="">
+          <div class="cci-info">
+            <div class="cci-name" id="ccName"></div>
+            <div class="cci-cat" id="ccCat"></div>
+            <div class="cci-price" id="ccPrice"></div>
+          </div>
+        </div>
+        <div class="cart-confirm-msg">
+          🛍️ ধন্যবাদ আপনার পছন্দ করার জন্য! চেকআউটে গিয়ে <strong>WhatsApp</strong> এ অর্ডার কনফার্ম করুন।<br>
+          <strong>আবার কিনতে আসবেন!</strong> 💛
+        </div>
+        <div class="cart-confirm-actions">
+          <button class="cc-btn-continue" id="ccContinue">শপিং চালিয়ে যান</button>
+          <button class="cc-btn-checkout" id="ccCheckout">🛒 চেকআউট</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ================================================================
        JAVASCRIPT — All logic in a single IIFE
        ================================================================ -->
@@ -1981,6 +2228,17 @@
     var $cartSubtotal  = document.getElementById('cartSubtotal');
     var $checkoutBtn   = document.getElementById('checkoutBtn');
     var $toast         = document.getElementById('toast');
+    var $tyOverlay     = document.getElementById('thankyouOverlay');
+    var $tyClose       = document.getElementById('thankyouClose');
+    var $tyBtn         = document.getElementById('thankyouBtn');
+    var $ccOverlay     = document.getElementById('cartConfirmOverlay');
+    var $ccClose       = document.getElementById('cartConfirmClose');
+    var $ccContinue    = document.getElementById('ccContinue');
+    var $ccCheckout    = document.getElementById('ccCheckout');
+    var $ccImg         = document.getElementById('ccImg');
+    var $ccName        = document.getElementById('ccName');
+    var $ccCat         = document.getElementById('ccCat');
+    var $ccPrice       = document.getElementById('ccPrice');
 
     /* ==============================================================
        RENDER PRODUCTS — carousel (all) or grid (specific category)
@@ -2076,7 +2334,7 @@
           e.stopPropagation();
           var pid = parseInt(this.getAttribute('data-id'), 10);
           var prod = products.find(function (x) { return x.id === pid; });
-          if (prod) { addToCart(prod); showToast(prod.name + ' added to cart!'); }
+          if (prod) { addToCart(prod); showCartConfirm(prod); }
         });
       });
       /* Click on card → go to that category */
@@ -2215,6 +2473,7 @@
     $modalAddCart.addEventListener('click', function () {
       if (!currentModalProduct) return;
       addToCart(currentModalProduct, modalQty);
+      showCartConfirm(currentModalProduct);
       closeModal();
     });
 
@@ -2338,6 +2597,34 @@
     $cartClose.addEventListener('click', closeCartDrawer);
     $cartOverlay.addEventListener('click', closeCartDrawer);
 
+    /* Thank You modal close */
+    function closeThankYou() { $tyOverlay.classList.remove('open'); }
+    if ($tyClose) $tyClose.addEventListener('click', closeThankYou);
+    if ($tyBtn) $tyBtn.addEventListener('click', closeThankYou);
+    $tyOverlay.addEventListener('click', function (e) { if (e.target === $tyOverlay) closeThankYou(); });
+
+    /* Add-to-Cart confirmation */
+    function showCartConfirm(product) {
+      if (product.image) {
+        $ccImg.src = product.image;
+        $ccImg.style.display = '';
+      } else {
+        $ccImg.style.display = 'none';
+      }
+      $ccName.textContent = product.name;
+      $ccCat.textContent = product.categoryLabel;
+      $ccPrice.textContent = 'Tk ' + product.price.toLocaleString();
+      $ccOverlay.classList.add('open');
+    }
+    function closeCartConfirm() { $ccOverlay.classList.remove('open'); }
+    if ($ccClose) $ccClose.addEventListener('click', closeCartConfirm);
+    if ($ccContinue) $ccContinue.addEventListener('click', closeCartConfirm);
+    if ($ccCheckout) $ccCheckout.addEventListener('click', function () {
+      closeCartConfirm();
+      openCartDrawer();
+    });
+    $ccOverlay.addEventListener('click', function (e) { if (e.target === $ccOverlay) closeCartConfirm(); });
+
     /* ==============================================================
        CHECKOUT → WHATSAPP
        ───────────────────────────────────────────────────────────────
@@ -2362,6 +2649,11 @@
 
       var url = 'https://wa.me/' + phoneNo + '?text=' + encodeURIComponent(msg);
       window.open(url, '_blank');
+      /* Show thank you modal and clear cart */
+      cart = [];
+      updateCartUI();
+      closeCartDrawer();
+      $tyOverlay.classList.add('open');
     });
 
     /* ==============================================================
