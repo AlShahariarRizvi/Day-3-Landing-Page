@@ -1,0 +1,2702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rimi Fashion — Traditional Sari & Ethnic Wear | Sitakunda, Chittagong</title>
+  <meta name="description" content="Rimi Fashion offers premium Jamdani, Katan, Party Sarees, Wedding Sarees, Three Piece sets, and Lehenga. Located in Sitakunda, Chittagong, Bangladesh.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — COLOR SYSTEM
+       Swap / tweak these to re-skin the whole site.
+       ============================================================ */
+    :root {
+      /* Primary palette */
+      --maroon:        #7B1E2E;
+      --maroon-dark:   #5A1522;
+      --maroon-light:  #9C3448;
+      --gold:          #C9A84C;
+      --gold-light:    #E4CC7A;
+      --gold-dark:     #A68832;
+      --jamdani-green: #2D5F3E;
+      --jamdani-green-light: #3E7E52;
+      --ivory:         #FAF6EE;
+      --ivory-dark:    #F0E8D8;
+
+      /* Neutrals */
+      --white:         #FFFFFF;
+      --black:         #1A1A1A;
+      --gray-100:      #F7F7F7;
+      --gray-200:      #E8E8E8;
+      --gray-300:      #D1D1D1;
+      --gray-500:      #7A7A7A;
+      --gray-700:      #444444;
+      --gray-900:      #222222;
+
+      /* Functional */
+      --shadow-sm:     0 1px 3px rgba(0,0,0,.08);
+      --shadow-md:     0 4px 16px rgba(0,0,0,.10);
+      --shadow-lg:     0 8px 32px rgba(0,0,0,.14);
+      --radius:        8px;
+      --radius-lg:     14px;
+      --transition:    .25s ease;
+
+      /* Typography */
+      --font-display:  'Playfair Display', 'Georgia', serif;
+      --font-body:     'Inter', 'Segoe UI', sans-serif;
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--gray-900);
+      background: var(--ivory);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ul { list-style: none; }
+
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* ============================================================
+       WOVEN / PAISLEY BORDER MOTIF — repeated between sections
+       ============================================================ */
+    .section-divider {
+      width: 100%;
+      height: 36px;
+      background:
+        /* Repeating diamond-paisley motif */
+        repeating-linear-gradient(
+          90deg,
+          var(--gold) 0px, var(--gold) 8px,
+          transparent 8px, transparent 16px
+        ),
+        repeating-linear-gradient(
+          45deg,
+          var(--maroon) 0px, var(--maroon) 4px,
+          transparent 4px, transparent 12px
+        );
+      background-size: 32px 18px, 24px 24px;
+      background-blend-mode: multiply;
+      opacity: .7;
+      position: relative;
+    }
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          var(--jamdani-green) 0, var(--jamdani-green) 3px,
+          transparent 3px, transparent 10px
+        );
+      background-size: 20px 100%;
+      opacity: .25;
+    }
+    /* Cleaner woven strip variant */
+    .woven-border {
+      height: 12px;
+      width: 100%;
+      background:
+        repeating-linear-gradient(
+          120deg,
+          var(--gold) 0 6px,
+          var(--maroon) 6px 12px,
+          var(--jamdani-green) 12px 18px,
+          var(--gold-light) 18px 24px
+        );
+      opacity: .55;
+    }
+
+    /* ============================================================
+       STICKY HEADER
+       ============================================================ */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: var(--maroon-dark);
+      color: var(--white);
+      transition: box-shadow var(--transition);
+    }
+    .header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.3); }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: .5px;
+    }
+    .logo span { color: var(--white); font-weight: 400; }
+
+    /* Desktop nav */
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: .88rem;
+      font-weight: 500;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      color: var(--ivory);
+      position: relative;
+      padding-bottom: 2px;
+      transition: color var(--transition);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+
+    /* Cart button */
+    .cart-btn {
+      position: relative;
+      color: var(--ivory);
+      font-size: 1.35rem;
+      padding: 6px;
+      transition: color var(--transition);
+    }
+    .cart-btn:hover { color: var(--gold); }
+    .cart-count {
+      position: absolute;
+      top: -2px; right: -4px;
+      background: var(--gold);
+      color: var(--maroon-dark);
+      font-size: .65rem;
+      font-weight: 700;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: scale(0);
+      transition: transform .2s cubic-bezier(.34,1.56,.64,1);
+    }
+    .cart-count.visible { transform: scale(1); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--ivory);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 70px; left: 0; right: 0; bottom: 0;
+      background: var(--maroon-dark);
+      padding: 32px 24px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 0;
+      animation: slideDown .3s ease;
+    }
+    .mobile-menu.open { display: flex; }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .mobile-menu a {
+      display: block;
+      padding: 14px 0;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ivory);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ============================================================
+       HERO SECTION
+       ============================================================ */
+    .hero {
+      margin-top: 70px;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--maroon-dark) 0%, var(--maroon) 50%, var(--jamdani-green) 100%);
+    }
+    /* ── Slideshow background ── */
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+    .hero-slide.active { opacity: 1; }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(90,21,34,.82) 0%, rgba(123,30,46,.6) 50%, rgba(45,95,62,.55) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,168,76,.2);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,.82);
+      margin-bottom: 32px;
+      max-width: 520px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: .9rem;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      transition: all var(--transition);
+      letter-spacing: .3px;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--maroon-dark);
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201,168,76,.35);
+    }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,.35);
+      color: var(--white);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       SECTION SHARED
+       ============================================================ */
+    .section { padding: 72px 0; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--maroon);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--gray-500);
+      font-size: .95rem;
+      margin-bottom: 36px;
+    }
+
+    /* ============================================================
+       PRODUCT FILTER CHIPS
+       ============================================================ */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    .filter-chip {
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: .82rem;
+      font-weight: 500;
+      border: 1.5px solid var(--gray-200);
+      background: var(--white);
+      color: var(--gray-700);
+      transition: all var(--transition);
+      text-transform: uppercase;
+      letter-spacing: .4px;
+    }
+    .filter-chip:hover {
+      border-color: var(--maroon-light);
+      color: var(--maroon);
+    }
+    .filter-chip.active {
+      background: var(--maroon);
+      color: var(--white);
+      border-color: var(--maroon);
+    }
+
+    /* ============================================================
+       PRODUCT GRID
+       ============================================================ */
+    /* ── Product Carousel ── */
+    .product-carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+    }
+    .product-carousel-track {
+      display: flex;
+      transition: transform .6s cubic-bezier(.4,0,.2,1);
+    }
+    .product-carousel-slide {
+      min-width: 100%;
+      flex-shrink: 0;
+    }
+
+    /* Grid mode — specific category selected */
+    .product-carousel.grid-mode {
+      overflow: visible;
+      box-shadow: none;
+    }
+    .product-carousel.grid-mode .product-carousel-track {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      transition: none;
+      transform: none !important;
+    }
+    .product-carousel.grid-mode .product-carousel-slide {
+      min-width: 0;
+    }
+    .product-carousel.grid-mode .product-info {
+      position: static;
+      background: var(--white);
+      padding: 16px 18px 20px;
+      color: var(--gray-900);
+    }
+    .product-carousel.grid-mode .product-category { color: var(--gold-dark); }
+    .product-carousel.grid-mode .product-name { color: var(--gray-900); font-size: 1.05rem; }
+    .product-carousel.grid-mode .product-desc { color: var(--gray-600); font-size: .85rem; margin-bottom: 10px; }
+    .product-carousel.grid-mode .product-price { color: var(--maroon); }
+    .product-carousel.grid-mode .product-price span { color: var(--gray-500); }
+    .product-carousel.grid-mode .product-swatch { height: 340px; }
+    .product-carousel.grid-mode .product-card { cursor: default; }
+    .product-carousel.grid-mode .product-card:hover { transform: none; box-shadow: var(--shadow-sm); }
+
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow .25s, transform .25s;
+      cursor: pointer;
+    }
+    .product-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .product-swatch {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+    }
+    .swatch-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.85);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+    .product-swatch img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+    }
+    .product-swatch img.error { display: none; }
+    .product-swatch.no-img .swatch-placeholder { display: flex; }
+
+    .product-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 60px 32px 28px;
+      background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.4) 60%, transparent 100%);
+      color: var(--white);
+    }
+    .product-category {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--gold-light);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .product-desc {
+      font-size: .9rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 12px;
+    }
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+    }
+    .product-price span { font-weight: 400; font-size: .85rem; color: rgba(255,255,255,.6); }
+
+    .btn-add-cart {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--maroon);
+      color: var(--white);
+      border: none;
+      padding: 12px 28px;
+      border-radius: var(--radius-md);
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .25s, transform .15s;
+    }
+    .btn-add-cart:hover { background: var(--maroon-dark); transform: translateY(-1px); }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      border: none;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--maroon);
+      transition: background .2s, transform .15s;
+      z-index: 10;
+    }
+    .carousel-arrow:hover { background: var(--white); transform: translateY(-50%) scale(1.08); }
+    .carousel-arrow.prev { left: 16px; }
+    .carousel-arrow.next { right: 16px; }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .carousel-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--maroon);
+      background: transparent;
+      cursor: pointer;
+      transition: background .25s, transform .2s;
+      padding: 0;
+    }
+    .carousel-dot.active {
+      background: var(--maroon);
+      transform: scale(1.2);
+    }
+
+    .carousel-counter {
+      text-align: center;
+      margin-top: 8px;
+      font-size: .82rem;
+      color: var(--gray-500);
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+      .product-swatch { height: 350px; }
+      .product-info { padding: 50px 20px 20px; }
+      .product-name { font-size: 1.2rem; }
+      .carousel-arrow { width: 40px; height: 40px; font-size: 1rem; }
+      .carousel-arrow.prev { left: 8px; }
+      .carousel-arrow.next { right: 8px; }
+      .product-carousel.grid-mode .product-carousel-track {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ============================================================
+       QUICK-VIEW MODAL
+       ============================================================ */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn .2s ease;
+    }
+    .modal-overlay.open { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      max-width: 780px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      animation: modalIn .3s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px; right: 14px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--gray-700);
+      z-index: 2;
+      transition: background var(--transition);
+    }
+    .modal-close:hover { background: var(--gray-200); }
+
+    .modal-image {
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.8);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .modal-details {
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-details .product-category { margin-bottom: 4px; }
+    .modal-details .product-name {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    .modal-details .product-price {
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+    }
+    .modal-desc {
+      font-size: .9rem;
+      color: var(--gray-500);
+      line-height: 1.65;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .qty-selector {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .qty-selector label {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .qty-controls button {
+      width: 36px; height: 36px;
+      font-size: 1rem;
+      color: var(--gray-700);
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+    .qty-controls button:hover { background: var(--gray-200); }
+    .qty-controls span {
+      width: 40px;
+      text-align: center;
+      font-weight: 600;
+      font-size: .95rem;
+    }
+
+    .btn-add-cart {
+      width: 100%;
+      padding: 14px;
+      background: var(--maroon);
+      color: var(--white);
+      font-weight: 600;
+      font-size: .92rem;
+      border-radius: var(--radius);
+      letter-spacing: .3px;
+      transition: all var(--transition);
+    }
+    .btn-add-cart:hover {
+      background: var(--maroon-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(123,30,46,.3);
+    }
+
+    @media (max-width: 640px) {
+      .modal { grid-template-columns: 1fr; }
+      .modal-image {
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        aspect-ratio: 16/10;
+      }
+    }
+
+    /* ============================================================
+       CART DRAWER (slide-in from right)
+       ============================================================ */
+    .cart-drawer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      z-index: 3000;
+    }
+    .cart-drawer-overlay.open { display: block; }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: 400px;
+      max-width: 92vw;
+      background: var(--white);
+      z-index: 3001;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform .3s ease;
+      box-shadow: -4px 0 30px rgba(0,0,0,.15);
+    }
+    .cart-drawer.open { transform: translateX(0); }
+
+    .cart-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .cart-drawer-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--maroon);
+    }
+    .cart-drawer-close {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--gray-700);
+      transition: background var(--transition);
+    }
+    .cart-drawer-close:hover { background: var(--gray-200); }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 22px;
+    }
+    .cart-empty {
+      text-align: center;
+      padding: 48px 20px;
+      color: var(--gray-500);
+    }
+    .cart-empty svg {
+      width: 56px; height: 56px;
+      margin-bottom: 12px;
+      opacity: .35;
+    }
+    .cart-empty p { font-size: .9rem; }
+
+    .cart-item {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-100);
+      align-items: flex-start;
+    }
+    .cart-item-swatch {
+      width: 64px; height: 76px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.7);
+      font-size: .6rem;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-name {
+      font-family: var(--font-display);
+      font-size: .92rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cart-item-cat {
+      font-size: .7rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 6px;
+    }
+    .cart-item-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--gray-200);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .cart-item-qty button {
+      width: 28px; height: 28px;
+      font-size: .85rem;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+    .cart-item-qty button:hover { background: var(--gray-200); }
+    .cart-item-qty span {
+      width: 30px;
+      text-align: center;
+      font-size: .82rem;
+      font-weight: 600;
+    }
+    .cart-item-price {
+      font-weight: 600;
+      font-size: .88rem;
+      color: var(--maroon);
+    }
+    .cart-item-remove {
+      font-size: .72rem;
+      color: var(--gray-500);
+      margin-top: 4px;
+      text-align: right;
+      transition: color var(--transition);
+    }
+    .cart-item-remove:hover { color: #c0392b; }
+
+    .cart-drawer-footer {
+      padding: 18px 22px;
+      border-top: 1px solid var(--gray-200);
+      background: var(--gray-100);
+    }
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .cart-subtotal-label {
+      font-size: .9rem;
+      color: var(--gray-700);
+    }
+    .cart-subtotal-value {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--maroon);
+    }
+    .btn-checkout {
+      width: 100%;
+      padding: 14px;
+      background: var(--jamdani-green);
+      color: var(--white);
+      font-weight: 600;
+      font-size: .92rem;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all var(--transition);
+      letter-spacing: .3px;
+    }
+    .btn-checkout:hover {
+      background: var(--jamdani-green-light);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(45,95,62,.3);
+    }
+
+    /* ============================================================
+       ABOUT / LOCATION SECTION
+       ============================================================ */
+    .about {
+      background: var(--white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .about-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--maroon);
+      margin-bottom: 16px;
+    }
+    .about-text p {
+      color: var(--gray-700);
+      font-size: .95rem;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .about-details {
+      background: var(--ivory);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 1px solid var(--gray-200);
+    }
+    .about-details h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--maroon);
+      margin-bottom: 18px;
+    }
+    .detail-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: .9rem;
+      color: var(--gray-700);
+      align-items: flex-start;
+    }
+    .detail-row svg {
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--gold-dark);
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      background: var(--maroon-dark);
+      color: rgba(255,255,255,.7);
+      padding: 40px 0 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .footer p { font-size: .82rem; line-height: 1.7; }
+    .footer a { color: var(--gold-light); }
+    .footer a:hover { color: var(--gold); }
+
+    /* ============================================================
+       CUSTOMER REVIEWS SECTION
+       ============================================================ */
+    .reviews { background: var(--ivory); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .review-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+    .review-card::before {
+      content: '\201C';
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: .3;
+      position: absolute;
+      top: 8px; left: 18px;
+      line-height: 1;
+    }
+    .review-stars {
+      color: var(--gold);
+      font-size: .95rem;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+    .review-text {
+      font-size: .9rem;
+      color: var(--gray-700);
+      line-height: 1.7;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--maroon);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: .85rem;
+      flex-shrink: 0;
+    }
+    .review-name {
+      font-weight: 600;
+      font-size: .88rem;
+      color: var(--gray-900);
+    }
+    .review-date {
+      font-size: .75rem;
+      color: var(--gray-500);
+    }
+    /* Add review form */
+    .add-review-box {
+      margin-top: 36px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-sm);
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .add-review-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--maroon);
+      margin-bottom: 16px;
+    }
+    .review-form input,
+    .review-form textarea,
+    .review-form select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: .88rem;
+      margin-bottom: 12px;
+      transition: border-color var(--transition);
+      background: var(--gray-100);
+    }
+    .review-form input:focus,
+    .review-form textarea:focus,
+    .review-form select:focus {
+      outline: none;
+      border-color: var(--maroon);
+    }
+    .review-form textarea { resize: vertical; min-height: 80px; }
+    .review-form .btn-submit {
+      padding: 11px 28px;
+      background: var(--maroon);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: .88rem;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .review-form .btn-submit:hover { background: var(--maroon-dark); }
+    .star-rating-input {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+    .star-rating-input span {
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--gray-300);
+      transition: color .15s;
+    }
+    .star-rating-input span.active,
+    .star-rating-input span:hover { color: var(--gold); }
+
+    /* ============================================================
+       ADMIN PANEL
+       ============================================================ */
+    .admin-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 4000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .admin-overlay.open { display: flex; }
+    .admin-panel {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: modalIn .3s ease;
+    }
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      z-index: 1;
+    }
+    .admin-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--maroon);
+    }
+    .admin-close {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--gray-700);
+    }
+    .admin-body { padding: 24px; }
+
+    /* Admin tabs */
+    .admin-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--gray-200);
+      margin-bottom: 24px;
+    }
+    .admin-tab {
+      padding: 10px 20px;
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--gray-500);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .admin-tab:hover { color: var(--maroon); }
+    .admin-tab.active {
+      color: var(--maroon);
+      border-bottom-color: var(--maroon);
+    }
+    .admin-tab-content { display: none; }
+    .admin-tab-content.active { display: block; }
+
+    /* Admin login */
+    .admin-login-box {
+      max-width: 360px;
+      margin: 60px auto;
+      text-align: center;
+    }
+    .admin-login-box h3 {
+      font-family: var(--font-display);
+      color: var(--maroon);
+      margin-bottom: 20px;
+    }
+    .admin-login-box input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      font-size: .95rem;
+      margin-bottom: 14px;
+      text-align: center;
+      letter-spacing: 3px;
+    }
+    .admin-login-box input:focus {
+      outline: none;
+      border-color: var(--maroon);
+    }
+    .admin-login-box .btn-login {
+      padding: 12px 32px;
+      background: var(--maroon);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: .9rem;
+      cursor: pointer;
+    }
+    .admin-login-box .login-error {
+      color: #c0392b;
+      font-size: .82rem;
+      margin-top: 8px;
+      display: none;
+    }
+
+    /* Admin stats */
+    .admin-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--ivory);
+      border-radius: var(--radius);
+      padding: 18px;
+      text-align: center;
+    }
+    .stat-card .stat-value {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--maroon);
+    }
+    .stat-card .stat-label {
+      font-size: .78rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-top: 4px;
+    }
+
+    /* Admin product list */
+    .admin-product-list {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .admin-product-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: .88rem;
+    }
+    .admin-product-row:last-child { border-bottom: none; }
+    .admin-product-row img {
+      width: 48px; height: 56px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .admin-product-row .ap-name { flex: 1; font-weight: 500; }
+    .admin-product-row .ap-cat { color: var(--gray-500); font-size: .78rem; min-width: 80px; }
+    .admin-product-row .ap-price { font-weight: 600; color: var(--maroon); min-width: 80px; text-align: right; }
+
+    /* Admin order list */
+    .admin-order-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      font-size: .88rem;
+    }
+    .admin-order-row .order-num {
+      font-weight: 700;
+      color: var(--maroon);
+      min-width: 80px;
+    }
+    .admin-order-row .order-items {
+      flex: 1;
+      color: var(--gray-700);
+    }
+    .admin-order-row .order-total {
+      font-weight: 600;
+      color: var(--jamdani-green);
+      white-space: nowrap;
+    }
+    .admin-no-data {
+      text-align: center;
+      padding: 40px;
+      color: var(--gray-500);
+      font-size: .9rem;
+    }
+
+    /* Admin nav button */
+    .admin-nav-btn {
+      padding: 5px 14px;
+      font-size: .75rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,.25);
+      color: var(--gold);
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      transition: all var(--transition);
+    }
+    .admin-nav-btn:hover {
+      background: var(--gold);
+      color: var(--maroon-dark);
+    }
+    @media (max-width: 768px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+      .admin-stats { grid-template-columns: 1fr 1fr; }
+      .admin-product-row { flex-wrap: wrap; }
+    }
+
+    /* ============================================================
+       UTILITY / ANIMATION
+       ============================================================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--jamdani-green);
+      color: var(--white);
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-size: .85rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-lg);
+      z-index: 5000;
+      opacity: 0;
+      transition: all .35s cubic-bezier(.34,1.56,.64,1);
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================================
+       HEADER
+       ================================================================ -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="#hero" class="logo">Rimi <span>Fashion</span></a>
+
+      <nav class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#products">Collection</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#about">About</a>
+        <a href="#about">Contact</a>
+        <button class="admin-nav-btn" id="adminBtn">Admin</button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="cart-btn" id="cartToggle" aria-label="Open cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#hero">Home</a>
+    <a href="#products">Collection</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#about">About</a>
+    <a href="#about">Contact</a>
+    <a href="javascript:void(0)" id="adminBtnMobile">Admin Panel</a>
+  </div>
+
+  <!-- ================================================================
+       HERO
+       ================================================================ -->
+  <section class="hero" id="hero">
+    <!-- Hero background slideshow — traditional saree photos cycling every 5s -->
+    <div class="hero-slides" id="heroSlides">
+      <!--
+        ─────────────────────────────────────────────────────────
+        TO USE YOUR OWN PHOTOS: Replace these Pexels URLs with
+        local paths like "images/hero-1.jpg"
+        ─────────────────────────────────────────────────────────
+      -->
+      <div class="hero-slide active" style="background-image:url('https://images.pexels.com/photos/14928074/pexels-photo-14928074.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop')"></div>
+      <div class="hero-slide" style="background-image:url('https://images.pexels.com/photos/8749763/pexels-photo-8749763.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop')"></div>
+      <div class="hero-slide" style="background-image:url('https://images.pexels.com/photos/37054322/pexels-photo-37054322.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop')"></div>
+      <div class="hero-slide" style="background-image:url('https://images.pexels.com/photos/18700114/pexels-photo-18700114.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop')"></div>
+      <div class="hero-slide" style="background-image:url('https://images.pexels.com/photos/7176438/pexels-photo-7176438.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop')"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge">Sitakunda, Chittagong</span>
+        <h1>Timeless Elegance<br>Woven in <em>Every Thread</em></h1>
+        <p>Discover handpicked Jamdani, Katan, and artisan sarees alongside stunning Lehenga and Three Piece collections — crafted for the modern woman who cherishes tradition.</p>
+        <div class="hero-actions">
+          <a href="#products" class="btn btn-primary">Explore Collection</a>
+          <a href="#about" class="btn btn-outline">Visit Our Shop</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Woven border divider -->
+  <div class="woven-border"></div>
+
+  <!-- ================================================================
+       PRODUCTS
+       ================================================================ -->
+  <section class="section" id="products">
+    <div class="container">
+      <h2 class="section-title fade-up">Our Collection</h2>
+      <p class="section-subtitle fade-up">Each piece tells a story of heritage and craftsmanship</p>
+
+      <div class="filter-bar fade-up" id="filterBar">
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="jamdani">Jamdani</button>
+        <button class="filter-chip" data-filter="katan">Katan</button>
+        <button class="filter-chip" data-filter="party-saree">Party Saree</button>
+        <button class="filter-chip" data-filter="wedding-saree">Wedding Saree</button>
+        <button class="filter-chip" data-filter="three-piece">Three Piece</button>
+        <button class="filter-chip" data-filter="lehenga">Lehenga</button>
+      </div>
+
+      <div class="product-carousel" id="productCarousel">
+        <div class="product-carousel-track" id="productTrack">
+          <!-- Slides injected by JS -->
+        </div>
+        <button class="carousel-arrow prev" id="carouselPrev">&#10094;</button>
+        <button class="carousel-arrow next" id="carouselNext">&#10095;</button>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <div class="carousel-counter" id="carouselCounter"></div>
+    </div>
+  </section>
+
+  <div class="woven-border"></div>
+
+  <!-- ================================================================
+       ABOUT / LOCATION
+       ================================================================ -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <h2>Rooted in Tradition,<br>Stitched with Love</h2>
+          <p>Rimi Fashion has been the go-to destination for premium sarees and ethnic wear in Sitakunda, Chittagong. From everyday elegance to bridal grandeur, we curate collections that celebrate South Asian heritage.</p>
+          <p>Every piece in our shop is hand-selected for quality, authenticity, and timeless beauty. Whether you're shopping for a wedding, a festival, or simply treating yourself — we have something special waiting for you.</p>
+        </div>
+        <div class="about-details fade-up">
+          <h3>Visit Us</h3>
+          <div class="detail-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <strong>Rimi Fashion</strong><br>
+              Sitakunda, Chittagong<br>
+              Bangladesh — 4310
+            </div>
+          </div>
+          <div class="detail-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div>
+              <strong>Shop Hours</strong><br>
+              Sat – Thu: 10:00 AM – 9:00 PM<br>
+              Friday: 3:00 PM – 9:00 PM
+            </div>
+          </div>
+          <div class="detail-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <strong>Contact</strong><br>
+              <!-- REPLACE: Insert your real WhatsApp number below (country code +880) -->
+              WhatsApp: +880 1XXX-XXXXXX<br>
+              <!-- REPLACE: Insert real phone number -->
+              Phone: +880 1XXX-XXXXXX
+            </div>
+          </div>
+          <div class="detail-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <div>
+              <strong>Email</strong><br>
+              <!-- REPLACE: Insert real email -->
+              info@rimifashion.com
+            </div>
+          </div>
+          <div class="about-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58877.388!2d91.66!3d22.48!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30ad27c3e3e3e3e3%3A0x1234567890abcdef!2sSitakunda%2C%20Chittagong!5e0!3m2!1sen!2sbd!4v1"
+              width="100%"
+              height="180"
+              style="border:0;border-radius:var(--radius);margin-top:18px;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="woven-border"></div>
+
+  <!-- ================================================================
+       CUSTOMER REVIEWS
+       ================================================================ -->
+  <section class="section reviews" id="reviews">
+    <div class="container">
+      <h2 class="section-title fade-up">What Our Customers Say</h2>
+      <p class="section-subtitle fade-up">Real reviews from happy customers across Bangladesh</p>
+
+      <div class="reviews-grid" id="reviewsGrid">
+        <!-- Reviews rendered by JS -->
+      </div>
+
+      <div class="add-review-box fade-up">
+        <h3>Write a Review</h3>
+        <form class="review-form" id="reviewForm">
+          <input type="text" id="reviewName" placeholder="Your Name" required>
+          <div class="star-rating-input" id="starRating">
+            <span data-star="1">&#9733;</span>
+            <span data-star="2">&#9733;</span>
+            <span data-star="3">&#9733;</span>
+            <span data-star="4">&#9733;</span>
+            <span data-star="5">&#9733;</span>
+          </div>
+          <textarea id="reviewText" placeholder="Share your experience with Rimi Fashion..." required></textarea>
+          <button type="submit" class="btn-submit">Submit Review</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="woven-border"></div>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">Rimi Fashion</div>
+      <p>Traditional Sari & Ethnic Wear — Sitakunda, Chittagong, Bangladesh</p>
+      <p style="margin-top:10px;">&copy; 2026 Rimi Fashion. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ================================================================
+       QUICK-VIEW MODAL
+       ================================================================ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-image" id="modalImage"></div>
+      <div class="modal-details">
+        <span class="product-category" id="modalCategory"></span>
+        <h2 class="product-name" id="modalName"></h2>
+        <p class="product-price" id="modalPrice"></p>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="qty-selector">
+          <label>Quantity</label>
+          <div class="qty-controls">
+            <button id="modalQtyMinus">−</button>
+            <span id="modalQtyValue">1</span>
+            <button id="modalQtyPlus">+</button>
+          </div>
+        </div>
+        <button class="btn-add-cart" id="modalAddCart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       CART DRAWER
+       ================================================================ -->
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>Your Cart</h3>
+      <button class="cart-drawer-close" id="cartClose">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Cart items rendered by JS -->
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal">
+        <span class="cart-subtotal-label">Subtotal</span>
+        <span class="cart-subtotal-value" id="cartSubtotal">Tk 0</span>
+      </div>
+      <button class="btn-checkout" id="checkoutBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        Order via WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <!-- ================================================================
+       ADMIN PANEL
+       ================================================================ -->
+  <div class="admin-overlay" id="adminOverlay">
+    <div class="admin-panel" id="adminPanel">
+      <div class="admin-header">
+        <h2>Admin Panel</h2>
+        <button class="admin-close" id="adminClose">&times;</button>
+      </div>
+      <div class="admin-body" id="adminBody">
+        <!-- Login screen (shown by default) -->
+        <div class="admin-login-box" id="adminLoginBox">
+          <h3>🔐 Admin Login</h3>
+          <input type="password" id="adminPassword" placeholder="Enter password" maxlength="20">
+          <br>
+          <button class="btn-login" id="adminLoginBtn">Login</button>
+          <p class="login-error" id="adminLoginError">Wrong password. Try again.</p>
+          <p style="font-size:.75rem;color:var(--gray-500);margin-top:16px;">Default password: <strong>rimi123</strong></p>
+        </div>
+        <!-- Dashboard (hidden until login) -->
+        <div id="adminDashboard" style="display:none;">
+          <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="overview">Overview</button>
+            <button class="admin-tab" data-tab="products">Products</button>
+            <button class="admin-tab" data-tab="orders">Orders</button>
+            <button class="admin-tab" data-tab="settings">Settings</button>
+          </div>
+
+          <!-- Overview tab -->
+          <div class="admin-tab-content active" id="tab-overview">
+            <div class="admin-stats" id="adminStats"></div>
+          </div>
+
+          <!-- Products tab -->
+          <div class="admin-tab-content" id="tab-products">
+            <div class="admin-product-list" id="adminProductList"></div>
+          </div>
+
+          <!-- Orders tab -->
+          <div class="admin-tab-content" id="tab-orders">
+            <div id="adminOrderList"></div>
+          </div>
+
+          <!-- Settings tab -->
+          <div class="admin-tab-content" id="tab-settings">
+            <div style="max-width:480px">
+              <h3 style="font-family:var(--font-display);color:var(--maroon);margin-bottom:16px;">Shop Settings</h3>
+              <label style="font-size:.85rem;font-weight:500;display:block;margin-bottom:6px;">WhatsApp Number (with country code)</label>
+              <input type="text" id="adminWhatsApp" style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-200);border-radius:var(--radius);font-size:.9rem;margin-bottom:16px;" placeholder="8801XXXXXXXXX">
+              <label style="font-size:.85rem;font-weight:500;display:block;margin-bottom:6px;">Admin Password</label>
+              <input type="text" id="adminNewPass" style="width:100%;padding:10px 14px;border:1.5px solid var(--gray-200);border-radius:var(--radius);font-size:.9rem;margin-bottom:16px;" placeholder="New password">
+              <button class="btn-submit" id="adminSaveSettings" style="background:var(--jamdani-green);">Save Settings</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       TOAST
+       ================================================================ -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ================================================================
+       JAVASCRIPT — All logic in a single IIFE
+       ================================================================ -->
+  <script>
+  (function () {
+    'use strict';
+
+    /* ==============================================================
+       PRODUCT DATA
+       Images are Pexels stock photos of models in sarees/traditional wear.
+       Replace image URLs with local paths to use your own product photos.
+       ============================================================== */
+    var products = [
+      // ── JAMDANI ──
+      {
+        id: 1,
+        name: 'Royal Jamdani Saree',
+        category: 'jamdani',
+        categoryLabel: 'Jamdani',
+        price: 4500,
+        color: 'linear-gradient(135deg, #2D5F3E 0%, #1a3a28 100%)',
+        image: 'https://images.pexels.com/photos/37054322/pexels-photo-37054322.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Handwoven Jamdani saree featuring intricate floral motifs on a deep emerald base. Crafted by master artisans in Sitakunda. Lightweight, breathable, and effortlessly elegant for any occasion.'
+      },
+      {
+        id: 2,
+        name: 'Classic White Jamdani',
+        category: 'jamdani',
+        categoryLabel: 'Jamdani',
+        price: 3800,
+        color: 'linear-gradient(135deg, #FAF6EE 0%, #E8E0D0 100%)',
+        image: 'https://images.pexels.com/photos/28428053/pexels-photo-28428053.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Pure white Jamdani with delicate gold thread borders. A timeless piece perfect for religious ceremonies and formal gatherings. Pairs beautifully with traditional gold jewelry.'
+      },
+      {
+        id: 3,
+        name: 'Jamdani Dupatta Set',
+        category: 'jamdani',
+        categoryLabel: 'Jamdani',
+        price: 2200,
+        color: 'linear-gradient(135deg, #C9A84C 0%, #A68832 100%)',
+        image: 'https://images.pexels.com/photos/36041239/pexels-photo-36041239.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'A stunning Jamdani dupatta paired with a solid kameez fabric. Ideal for those who love to mix traditional weaving with modern silhouettes.'
+      },
+      // ── KATAN ──
+      {
+        id: 4,
+        name: 'Silk Katan Banarasi',
+        category: 'katan',
+        categoryLabel: 'Katan',
+        price: 8500,
+        color: 'linear-gradient(135deg, #7B1E2E 0%, #5A1522 100%)',
+        image: 'https://images.pexels.com/photos/14928074/pexels-photo-14928074.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Luxurious Katan silk saree with elaborate Banarasi zari work. Rich maroon with gold pallu — a statement piece for weddings and celebrations. The hallmark of Bangladeshi elegance.'
+      },
+      {
+        id: 5,
+        name: 'Katan Silk Pastel',
+        category: 'katan',
+        categoryLabel: 'Katan',
+        price: 7200,
+        color: 'linear-gradient(135deg, #E8CC7A 0%, #D4B85A 100%)',
+        image: 'https://images.pexels.com/photos/9419023/pexels-photo-9419023.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Soft pastel Katan silk with contemporary floral motifs. Lightweight yet luxurious — ideal for daytime events and festive brunches.'
+      },
+      {
+        id: 6,
+        name: 'Traditional Katan Tussar',
+        category: 'katan',
+        categoryLabel: 'Katan',
+        price: 6500,
+        color: 'linear-gradient(135deg, #A68832 0%, #7D6424 100%)',
+        image: 'https://images.pexels.com/photos/37054310/pexels-photo-37054310.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Tussar Katan saree with a rich golden sheen and traditional border designs. A heritage piece that grows more beautiful with every wear.'
+      },
+      // ── PARTY SAREE ──
+      {
+        id: 7,
+        name: 'Sequin Night Party Saree',
+        category: 'party-saree',
+        categoryLabel: 'Party Saree',
+        price: 3500,
+        color: 'linear-gradient(135deg, #1A1A1A 0%, #333 100%)',
+        image: 'https://images.pexels.com/photos/6842754/pexels-photo-6842754.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Glamorous black party saree with sequin embellishments and a contemporary drape. Perfect for cocktail nights and festive parties.'
+      },
+      {
+        id: 8,
+        name: 'Georgette Party Saree',
+        category: 'party-saree',
+        categoryLabel: 'Party Saree',
+        price: 2800,
+        color: 'linear-gradient(135deg, #9C3448 0%, #7B1E2E 100%)',
+        image: 'https://images.pexels.com/photos/7176430/pexels-photo-7176430.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Flowy georgette saree in rich maroon with thread work borders. Easy to drape, lightweight, and perfect for any party occasion.'
+      },
+      {
+        id: 9,
+        name: 'Net Embroidered Saree',
+        category: 'party-saree',
+        categoryLabel: 'Party Saree',
+        price: 3200,
+        color: 'linear-gradient(135deg, #3E7E52 0%, #2D5F3E 100%)',
+        image: 'https://images.pexels.com/photos/7176441/pexels-photo-7176441.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Elegant net saree with floral embroidery and a contrasting blouse piece. Statement-making yet comfortable for long evening events.'
+      },
+      // ── WEDDING SAREE ──
+      {
+        id: 10,
+        name: 'Bridal Red Kanjivaram',
+        category: 'wedding-saree',
+        categoryLabel: 'Wedding Saree',
+        price: 15000,
+        color: 'linear-gradient(135deg, #C0392B 0%, #8B1A1A 100%)',
+        image: 'https://images.pexels.com/photos/28450594/pexels-photo-28450594.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'The ultimate bridal saree — rich red Kanjivaram with heavy gold zari work, intricate mango motifs, and a grand pallu. Designed for the bride who wants to make a regal entrance.'
+      },
+      {
+        id: 11,
+        name: 'Designer Wedding Saree',
+        category: 'wedding-saree',
+        categoryLabel: 'Wedding Saree',
+        price: 12000,
+        color: 'linear-gradient(135deg, #C9A84C 0%, #7B1E2E 100%)',
+        image: 'https://images.pexels.com/photos/37584632/pexels-photo-37584632.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Stunning designer wedding saree with a dual-tone maroon and gold palette. Stone work and mirror embellishments make this a showstopper for receptions.'
+      },
+      {
+        id: 12,
+        name: 'Silk Bridal Collection',
+        category: 'wedding-saree',
+        categoryLabel: 'Wedding Saree',
+        price: 18000,
+        color: 'linear-gradient(135deg, #5A1522 0%, #C9A84C 50%, #5A1522 100%)',
+        image: 'https://images.pexels.com/photos/32923333/pexels-photo-32923333.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Premium silk bridal saree with artisan-crafted motifs and real zari. A masterpiece that will be treasured for generations. Includes matching blouse piece.'
+      },
+      // ── THREE PIECE ──
+      {
+        id: 13,
+        name: 'Embroidered Three Piece',
+        category: 'three-piece',
+        categoryLabel: 'Three Piece',
+        price: 4200,
+        color: 'linear-gradient(135deg, #2D5F3E 0%, #C9A84C 100%)',
+        image: 'https://images.pexels.com/photos/20777205/pexels-photo-20777205.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Complete three-piece set with embroidered kameez, solid salwar, and a Jamdani-style dupatta. Versatile enough for both casual and semi-formal occasions.'
+      },
+      {
+        id: 14,
+        name: 'Cotton Casual Three Piece',
+        category: 'three-piece',
+        categoryLabel: 'Three Piece',
+        price: 1200,
+        color: 'linear-gradient(135deg, #E8B4B8 0%, #D4A0A0 100%)',
+        image: 'https://images.pexels.com/photos/20593499/pexels-photo-20593499.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Breathable cotton three piece in soft pink — salwar, kameez, and dupatta. Comfortable for everyday wear with a graceful feminine touch.'
+      },
+      {
+        id: 15,
+        name: 'Silk Party Three Piece',
+        category: 'three-piece',
+        categoryLabel: 'Three Piece',
+        price: 5800,
+        color: 'linear-gradient(135deg, #7B1E2E 0%, #C9A84C 100%)',
+        image: 'https://images.pexels.com/photos/20841148/pexels-photo-20841148.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Luxurious silk three-piece set with zari borders and a statement dupatta. Ideal for festivals, Eid celebrations, and family gatherings.'
+      },
+      // ── LEHENGA ──
+      {
+        id: 16,
+        name: 'Bridal Lehenga Choli',
+        category: 'lehenga',
+        categoryLabel: 'Lehenga',
+        price: 22000,
+        color: 'linear-gradient(135deg, #C0392B 0%, #C9A84C 100%)',
+        image: 'https://images.pexels.com/photos/8497894/pexels-photo-8497894.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Magnificent bridal lehenga with heavy embroidery, mirror work, and a flowing dupatta. A show-stopping ensemble designed for the most special day.'
+      },
+      {
+        id: 17,
+        name: 'Party Wear Lehenga',
+        category: 'lehenga',
+        categoryLabel: 'Lehenga',
+        price: 8500,
+        color: 'linear-gradient(135deg, #C9A84C 0%, #E4CC7A 100%)',
+        image: 'https://images.pexels.com/photos/5673602/pexels-photo-5673602.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Stunning party wear lehenga in a golden palette with contemporary embroidery. Comes with a choli and matching net dupatta. Perfect for sangeet and receptions.'
+      },
+      {
+        id: 18,
+        name: 'A-Line Silk Lehenga',
+        category: 'lehenga',
+        categoryLabel: 'Lehenga',
+        price: 6500,
+        color: 'linear-gradient(135deg, #2D5F3E 0%, #C9A84C 100%)',
+        image: 'https://images.pexels.com/photos/13817616/pexels-photo-13817616.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop',
+        desc: 'Graceful A-line silk lehenga with traditional border motifs and a contrasting blouse. Effortlessly combines heritage design with a flattering modern silhouette.'
+      }
+    ];
+
+    /* ==============================================================
+       STATE
+       ============================================================== */
+    var cart = [];           // Array of { product, qty }
+    var modalQty = 1;
+    var currentModalProduct = null;
+
+    /* ==============================================================
+       DOM REFS
+       ============================================================== */
+    var $header        = document.getElementById('header');
+    var $hamburger     = document.getElementById('hamburger');
+    var $mobileMenu    = document.getElementById('mobileMenu');
+    var $cartToggle    = document.getElementById('cartToggle');
+    var $cartCount     = document.getElementById('cartCount');
+    var $productTrack   = document.getElementById('productTrack');
+    var $carouselDots   = document.getElementById('carouselDots');
+    var $carouselCounter= document.getElementById('carouselCounter');
+    var $carouselPrev   = document.getElementById('carouselPrev');
+    var $carouselNext   = document.getElementById('carouselNext');
+    var $filterBar     = document.getElementById('filterBar');
+    var $modalOverlay  = document.getElementById('modalOverlay');
+    var $modal         = document.getElementById('modal');
+    var $modalClose    = document.getElementById('modalClose');
+    var $modalImage    = document.getElementById('modalImage');
+    var $modalCategory = document.getElementById('modalCategory');
+    var $modalName     = document.getElementById('modalName');
+    var $modalPrice    = document.getElementById('modalPrice');
+    var $modalDesc     = document.getElementById('modalDesc');
+    var $modalQtyMinus = document.getElementById('modalQtyMinus');
+    var $modalQtyPlus  = document.getElementById('modalQtyPlus');
+    var $modalQtyValue = document.getElementById('modalQtyValue');
+    var $modalAddCart  = document.getElementById('modalAddCart');
+    var $cartOverlay   = document.getElementById('cartOverlay');
+    var $cartDrawer    = document.getElementById('cartDrawer');
+    var $cartClose     = document.getElementById('cartClose');
+    var $cartItems     = document.getElementById('cartItems');
+    var $cartSubtotal  = document.getElementById('cartSubtotal');
+    var $checkoutBtn   = document.getElementById('checkoutBtn');
+    var $toast         = document.getElementById('toast');
+
+    /* ==============================================================
+       RENDER PRODUCTS — carousel (all) or grid (specific category)
+       ============================================================== */
+    var carouselIndex = 0;
+    var carouselTimer = null;
+    var carouselProducts = [];
+    var $carousel = document.getElementById('productCarousel');
+
+    function renderProducts(filter) {
+      filter = filter || 'all';
+      stopCarousel();
+      $productTrack.innerHTML = '';
+      carouselIndex = 0;
+      carouselProducts = [];
+
+      products.forEach(function (p) {
+        var show = filter === 'all' || p.category === filter;
+        if (!show) return;
+        carouselProducts.push(p);
+      });
+
+      var isGrid = filter !== 'all';
+
+      if (isGrid) {
+        /* ── Grid mode: show all at once ── */
+        $productTrack.style.transform = 'translateX(0)';
+        $carousel.classList.add('grid-mode');
+        /* Back to All button */
+        var backBtn = document.createElement('div');
+        backBtn.style.cssText = 'margin-bottom:16px;';
+        backBtn.innerHTML = '<button class="filter-chip active" id="backToAll" style="cursor:pointer">&#8592; Back to All</button>';
+        $productTrack.appendChild(backBtn);
+        document.getElementById('backToAll').addEventListener('click', function () {
+          activateFilter('all');
+        });
+        carouselProducts.forEach(function (p) {
+          var slide = document.createElement('div');
+          slide.className = 'product-carousel-slide';
+          slide.innerHTML = buildCardHtml(p, true);
+          $productTrack.appendChild(slide);
+        });
+        wireButtons();
+        $carouselDots.innerHTML = '';
+        $carouselCounter.textContent = carouselProducts.length + ' ' + filter + ' sarees';
+        $carouselPrev.style.display = 'none';
+        $carouselNext.style.display = 'none';
+      } else {
+        /* ── Carousel mode: one at a time ── */
+        $carousel.classList.remove('grid-mode');
+        $carouselPrev.style.display = '';
+        $carouselNext.style.display = '';
+        carouselProducts.forEach(function (p) {
+          var slide = document.createElement('div');
+          slide.className = 'product-carousel-slide';
+          slide.innerHTML = buildCardHtml(p);
+          $productTrack.appendChild(slide);
+        });
+        wireButtons();
+        buildCarouselDots();
+        goToSlide(0);
+        startCarousel();
+      }
+    }
+
+    function buildCardHtml(p, eager) {
+      var loading = eager ? 'eager' : 'lazy';
+      var imgHtml = p.image
+        ? '<img src="' + p.image + '" alt="' + p.name + '" loading="' + loading + '" onerror="this.classList.add(\'error\');this.parentElement.classList.add(\'no-img\')">'
+        : '';
+      return '<div class="product-card" data-category="' + p.category + '">' +
+        '<div class="product-swatch' + (p.image ? '' : ' no-img') + '" style="background:' + p.color + '">' +
+          imgHtml +
+          '<div class="swatch-placeholder">' +
+            '<span style="font-size:2rem">' + (p.icon || '') + '</span>' +
+            '<span style="margin-top:4px;font-size:.65rem;opacity:.6">Sample Swatch</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="product-info">' +
+          '<div class="product-category">' + p.categoryLabel + '</div>' +
+          '<div class="product-name">' + p.name + '</div>' +
+          '<div class="product-desc">' + p.desc + '</div>' +
+          '<div class="product-price">Tk ' + p.price.toLocaleString() + ' <span>BDT</span></div>' +
+          '<button class="btn-add-cart" data-id="' + p.id + '">&#9733; Add to Cart</button>' +
+        '</div>' +
+      '</div>';
+    }
+
+    function wireButtons() {
+      /* Add to cart buttons */
+      $productTrack.querySelectorAll('.btn-add-cart').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var pid = parseInt(this.getAttribute('data-id'), 10);
+          var prod = products.find(function (x) { return x.id === pid; });
+          if (prod) { addToCart(prod); showToast(prod.name + ' added to cart!'); }
+        });
+      });
+      /* Click on card → go to that category */
+      $productTrack.querySelectorAll('.product-card').forEach(function (card) {
+        card.addEventListener('click', function (e) {
+          if (e.target.closest('.btn-add-cart')) return;
+          var cat = card.getAttribute('data-category');
+          if (!cat) return;
+          activateFilter(cat);
+        });
+      });
+    }
+
+    function activateFilter(category) {
+      stopCarousel();
+      $filterBar.querySelectorAll('.filter-chip').forEach(function (c) {
+        c.classList.toggle('active', c.getAttribute('data-filter') === category);
+      });
+      renderProducts(category);
+      document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function buildCarouselDots() {
+      $carouselDots.innerHTML = '';
+      carouselProducts.forEach(function (_, i) {
+        var dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', function () {
+          goToSlide(i);
+          resetCarousel();
+        });
+        $carouselDots.appendChild(dot);
+      });
+    }
+
+    function goToSlide(n) {
+      carouselIndex = n;
+      $productTrack.style.transform = 'translateX(-' + (n * 100) + '%)';
+      $carouselDots.querySelectorAll('.carousel-dot').forEach(function (d, i) {
+        d.classList.toggle('active', i === n);
+      });
+      $carouselCounter.textContent = (n + 1) + ' / ' + carouselProducts.length;
+    }
+
+    function nextSlide() {
+      goToSlide((carouselIndex + 1) % carouselProducts.length);
+    }
+    function prevSlide() {
+      goToSlide((carouselIndex - 1 + carouselProducts.length) % carouselProducts.length);
+    }
+
+    function startCarousel() {
+      stopCarousel();
+      if (carouselProducts.length > 1) {
+        carouselTimer = setInterval(nextSlide, 5000);
+      }
+    }
+    function stopCarousel() {
+      if (carouselTimer) { clearInterval(carouselTimer); carouselTimer = null; }
+    }
+    function resetCarousel() {
+      stopCarousel();
+      startCarousel();
+    }
+
+    $carouselPrev.addEventListener('click', function () { prevSlide(); resetCarousel(); });
+    $carouselNext.addEventListener('click', function () { nextSlide(); resetCarousel(); });
+    $carousel.addEventListener('mouseenter', stopCarousel);
+    $carousel.addEventListener('mouseleave', startCarousel);
+
+    /* ==============================================================
+       FILTER CHIPS
+       ============================================================== */
+    $filterBar.addEventListener('click', function (e) {
+      var chip = e.target.closest('.filter-chip');
+      if (!chip) return;
+      $filterBar.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      renderProducts(chip.getAttribute('data-filter'));
+    });
+
+    /* ==============================================================
+       QUICK-VIEW MODAL
+       ============================================================== */
+    function openModal(product) {
+      currentModalProduct = product;
+      modalQty = 1;
+      $modalQtyValue.textContent = '1';
+
+      /*
+       ────────────────────────────────────────────────────────────
+       TO USE REAL PRODUCT PHOTOS: The modal now uses p.image.
+       Replace with local paths in the product data above.
+       ────────────────────────────────────────────────────────────
+      */
+      $modalImage.style.background = product.color;
+      if (product.image) {
+        $modalImage.innerHTML =
+          '<img src="' + product.image + '" alt="' + product.name +
+          '" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\'">';
+      } else {
+        $modalImage.innerHTML =
+          '<div style="text-align:center">' +
+            '<span style="font-size:3.5rem">' + (product.icon || '') + '</span>' +
+            '<div style="margin-top:8px;font-size:.7rem;opacity:.6">Sample Swatch</div>' +
+          '</div>';
+      }
+
+      $modalCategory.textContent = product.categoryLabel;
+      $modalName.textContent = product.name;
+      $modalPrice.textContent = 'Tk ' + product.price.toLocaleString() + ' BDT';
+      $modalDesc.textContent = product.desc;
+
+      $modalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      $modalOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+      currentModalProduct = null;
+    }
+
+    $modalClose.addEventListener('click', closeModal);
+    $modalOverlay.addEventListener('click', function (e) {
+      if (e.target === $modalOverlay) closeModal();
+    });
+
+    $modalQtyMinus.addEventListener('click', function () {
+      if (modalQty > 1) { modalQty--; $modalQtyValue.textContent = modalQty; }
+    });
+    $modalQtyPlus.addEventListener('click', function () {
+      if (modalQty < 99) { modalQty++; $modalQtyValue.textContent = modalQty; }
+    });
+
+    $modalAddCart.addEventListener('click', function () {
+      if (!currentModalProduct) return;
+      addToCart(currentModalProduct, modalQty);
+      closeModal();
+    });
+
+    /* ==============================================================
+       CART LOGIC (in-memory only — no localStorage)
+       ============================================================== */
+    function addToCart(product, qty) {
+      var existing = null;
+      for (var i = 0; i < cart.length; i++) {
+        if (cart[i].product.id === product.id) { existing = cart[i]; break; }
+      }
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({ product: product, qty: qty });
+      }
+      updateCartUI();
+      showToast(product.name + ' added to cart!');
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(function (item) { return item.product.id !== productId; });
+      updateCartUI();
+    }
+
+    function changeQty(productId, delta) {
+      for (var i = 0; i < cart.length; i++) {
+        if (cart[i].product.id === productId) {
+          cart[i].qty += delta;
+          if (cart[i].qty < 1) { removeFromCart(productId); return; }
+          break;
+        }
+      }
+      updateCartUI();
+    }
+
+    function getCartTotal() {
+      return cart.reduce(function (sum, item) { return sum + (item.product.price * item.qty); }, 0);
+    }
+
+    function getCartItemCount() {
+      return cart.reduce(function (sum, item) { return sum + item.qty; }, 0);
+    }
+
+    /* ==============================================================
+       CART DRAWER RENDER
+       ============================================================== */
+    function updateCartUI() {
+      var count = getCartItemCount();
+      $cartCount.textContent = count;
+      $cartCount.classList.toggle('visible', count > 0);
+
+      if (cart.length === 0) {
+        $cartItems.innerHTML =
+          '<div class="cart-empty">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' +
+            '<p>Your cart is empty</p>' +
+          '</div>';
+      } else {
+        var html = '';
+        cart.forEach(function (item) {
+          /*
+           ────────────────────────────────────────────────────────────
+           TO USE REAL PRODUCT PHOTOS in the cart drawer, the image
+           comes from item.product.image. Replace with local paths
+           in the product data above.
+           ────────────────────────────────────────────────────────────
+          */
+          var cartImgHtml = item.product.image
+            ? '<img src="' + item.product.image + '" alt="" style="width:64px;height:76px;object-fit:cover;border-radius:6px;">'
+            : '<div class="cart-item-swatch" style="background:' + item.product.color + '">' + (item.product.icon || '') + '</div>';
+          html +=
+            '<div class="cart-item">' +
+              cartImgHtml +
+              '<div class="cart-item-info">' +
+                '<div class="cart-item-name">' + item.product.name + '</div>' +
+                '<div class="cart-item-cat">' + item.product.categoryLabel + '</div>' +
+                '<div class="cart-item-bottom">' +
+                  '<div class="cart-item-qty">' +
+                    '<button data-action="minus" data-id="' + item.product.id + '">−</button>' +
+                    '<span>' + item.qty + '</span>' +
+                    '<button data-action="plus" data-id="' + item.product.id + '">+</button>' +
+                  '</div>' +
+                  '<div class="cart-item-price">Tk ' + (item.product.price * item.qty).toLocaleString() + '</div>' +
+                '</div>' +
+                '<button class="cart-item-remove" data-action="remove" data-id="' + item.product.id + '">Remove</button>' +
+              '</div>' +
+            '</div>';
+        });
+        $cartItems.innerHTML = html;
+      }
+
+      $cartSubtotal.textContent = 'Tk ' + getCartTotal().toLocaleString();
+    }
+
+    // Event delegation for cart item controls
+    $cartItems.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-action]');
+      if (!btn) return;
+      var id = parseInt(btn.getAttribute('data-id'), 10);
+      var action = btn.getAttribute('data-action');
+      if (action === 'minus') changeQty(id, -1);
+      else if (action === 'plus') changeQty(id, 1);
+      else if (action === 'remove') removeFromCart(id);
+    });
+
+    /* ==============================================================
+       CART DRAWER TOGGLE
+       ============================================================== */
+    function openCartDrawer() {
+      $cartOverlay.classList.add('open');
+      $cartDrawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeCartDrawer() {
+      $cartOverlay.classList.remove('open');
+      $cartDrawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    $cartToggle.addEventListener('click', openCartDrawer);
+    $cartClose.addEventListener('click', closeCartDrawer);
+    $cartOverlay.addEventListener('click', closeCartDrawer);
+
+    /* ==============================================================
+       CHECKOUT → WHATSAPP
+       ───────────────────────────────────────────────────────────────
+       REPLACE: Insert your real WhatsApp phone number (with country
+       code 880, no + or spaces) in the phoneNo variable below.
+       The wa.me link will open WhatsApp with a pre-filled message.
+       ============================================================== */
+    $checkoutBtn.addEventListener('click', function () {
+      if (cart.length === 0) {
+        showToast('Your cart is empty!');
+        return;
+      }
+
+      var phoneNo = adminWhatsAppNo; // Configurable from Admin Panel > Settings
+
+      var msg = 'Hello Rimi Fashion! I would like to place an order:\n\n';
+      cart.forEach(function (item) {
+        msg += '• ' + item.product.name + ' (' + item.product.categoryLabel + ') — Qty: ' + item.qty + ' — Tk ' + (item.product.price * item.qty).toLocaleString() + '\n';
+      });
+      msg += '\n*Subtotal: Tk ' + getCartTotal().toLocaleString() + '*';
+      msg += '\n\nPlease confirm availability and total including delivery. Thank you!';
+
+      var url = 'https://wa.me/' + phoneNo + '?text=' + encodeURIComponent(msg);
+      window.open(url, '_blank');
+    });
+
+    /* ==============================================================
+       HAMBURGER / MOBILE MENU
+       ============================================================== */
+    $hamburger.addEventListener('click', function () {
+      $hamburger.classList.toggle('active');
+      $mobileMenu.classList.toggle('open');
+    });
+
+    // Close mobile menu on link click
+    $mobileMenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        $hamburger.classList.remove('active');
+        $mobileMenu.classList.remove('open');
+      });
+    });
+
+    /* ==============================================================
+       STICKY HEADER SHADOW
+       ============================================================== */
+    window.addEventListener('scroll', function () {
+      $header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    /* ==============================================================
+       SCROLL REVEAL (fade-up)
+       ============================================================== */
+    var fadeEls = document.querySelectorAll('.fade-up');
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    fadeEls.forEach(function (el) { observer.observe(el); });
+
+    /* ==============================================================
+       TOAST NOTIFICATION
+       ============================================================== */
+    var toastTimer = null;
+    function showToast(message) {
+      clearTimeout(toastTimer);
+      $toast.textContent = message;
+      $toast.classList.add('show');
+      toastTimer = setTimeout(function () { $toast.classList.remove('show'); }, 2200);
+    }
+
+    /* ==============================================================
+       HERO SLIDESHOW — auto-rotates every 5 seconds
+       ============================================================== */
+    var heroSlides = document.querySelectorAll('.hero-slide');
+    var heroCurrent = 0;
+    function nextHeroSlide() {
+      heroSlides[heroCurrent].classList.remove('active');
+      heroCurrent = (heroCurrent + 1) % heroSlides.length;
+      heroSlides[heroCurrent].classList.add('active');
+    }
+    if (heroSlides.length > 1) {
+      setInterval(nextHeroSlide, 5000);
+    }
+
+    /* ==============================================================
+       CUSTOMER REVIEWS
+       ============================================================== */
+    var defaultReviews = [
+      { name: 'Fatima Ahmed', stars: 5, text: 'Bought a Jamdani saree for my wedding reception. The quality is outstanding! Everyone asked where I got it from. Thank you Rimi Fashion!', date: '2 days ago' },
+      { name: 'Nusrat Jahan', stars: 5, text: 'Best collection of Katan silk sarees in Sitakunda. The owner is very helpful and knows fabrics inside out. Highly recommended!', date: '1 week ago' },
+      { name: 'Sabrina Akter', stars: 4, text: 'Beautiful Three Piece set at a very reasonable price. Delivery was also quick. Will buy again InshaAllah.', date: '2 weeks ago' },
+      { name: 'Taslima Begum', stars: 5, text: 'Rimi Fashion has the best bridal collection in Chittagong. My daughter loved her wedding saree. Thank you for making her day special!', date: '3 weeks ago' },
+      { name: 'Ayesha Siddiqua', stars: 5, text: 'Ordered a party lehenga for my cousin\'s sangeet. Got so many compliments! The embroidery work is beautiful and price is fair.', date: '1 month ago' },
+      { name: 'Sharmin Sultana', stars: 4, text: 'Love the variety they have. From Jamdani to wedding sarees — everything is here. The shop ambiance is also very nice and traditional.', date: '1 month ago' }
+    ];
+
+    // Load reviews from memory (not localStorage)
+    var userReviews = [];
+    var allReviews = defaultReviews.slice();
+
+    function renderReviews() {
+      var grid = document.getElementById('reviewsGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      allReviews.forEach(function (r) {
+        var starsHtml = '';
+        for (var i = 0; i < 5; i++) {
+          starsHtml += i < r.stars ? '&#9733;' : '&#9734;';
+        }
+        var initials = r.name.split(' ').map(function (w) { return w[0]; }).join('').toUpperCase();
+        var card = document.createElement('div');
+        card.className = 'review-card fade-up';
+        card.innerHTML =
+          '<div class="review-stars">' + starsHtml + '</div>' +
+          '<p class="review-text">' + r.text + '</p>' +
+          '<div class="review-author">' +
+            '<div class="review-avatar">' + initials + '</div>' +
+            '<div>' +
+              '<div class="review-name">' + r.name + '</div>' +
+              '<div class="review-date">' + r.date + '</div>' +
+            '</div>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+      // Re-observe new fade-up elements
+      grid.querySelectorAll('.fade-up').forEach(function (el) { observer.observe(el); });
+    }
+
+    // Star rating input
+    var selectedStars = 0;
+    var starRatingEl = document.getElementById('starRating');
+    if (starRatingEl) {
+      starRatingEl.querySelectorAll('span').forEach(function (star) {
+        star.addEventListener('click', function () {
+          selectedStars = parseInt(this.getAttribute('data-star'), 10);
+          starRatingEl.querySelectorAll('span').forEach(function (s, idx) {
+            s.classList.toggle('active', idx < selectedStars);
+          });
+        });
+        star.addEventListener('mouseenter', function () {
+          var val = parseInt(this.getAttribute('data-star'), 10);
+          starRatingEl.querySelectorAll('span').forEach(function (s, idx) {
+            s.style.color = idx < val ? 'var(--gold)' : '';
+          });
+        });
+        star.addEventListener('mouseleave', function () {
+          starRatingEl.querySelectorAll('span').forEach(function (s, idx) {
+            s.style.color = idx < selectedStars ? 'var(--gold)' : '';
+          });
+        });
+      });
+    }
+
+    // Review form submission
+    var reviewForm = document.getElementById('reviewForm');
+    if (reviewForm) {
+      reviewForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('reviewName').value.trim();
+        var text = document.getElementById('reviewText').value.trim();
+        if (!name || !text || selectedStars === 0) {
+          showToast('Please fill all fields and select a rating');
+          return;
+        }
+        var newReview = { name: name, stars: selectedStars, text: text, date: 'Just now' };
+        allReviews.unshift(newReview);
+        userReviews.push(newReview);
+        renderReviews();
+        reviewForm.reset();
+        selectedStars = 0;
+        starRatingEl.querySelectorAll('span').forEach(function (s) {
+          s.classList.remove('active');
+          s.style.color = '';
+        });
+        showToast('Thank you for your review!');
+      });
+    }
+
+    /* ==============================================================
+       ADMIN PANEL
+       ============================================================== */
+    // REPLACE: Change this default password to something secure
+    var adminPassword = 'rimi123';
+    // REPLACE: Default WhatsApp number
+    var adminWhatsAppNo = '8801XXXXXXXXX';
+    var adminLoggedIn = false;
+    var adminOrders = []; // In-memory order log
+
+    var $adminOverlay = document.getElementById('adminOverlay');
+    var $adminClose = document.getElementById('adminClose');
+    var $adminLoginBox = document.getElementById('adminLoginBox');
+    var $adminDashboard = document.getElementById('adminDashboard');
+    var $adminPassword = document.getElementById('adminPassword');
+    var $adminLoginBtn = document.getElementById('adminLoginBtn');
+    var $adminLoginError = document.getElementById('adminLoginError');
+    var $adminBtn = document.getElementById('adminBtn');
+    var $adminBtnMobile = document.getElementById('adminBtnMobile');
+
+    function openAdmin() {
+      $adminOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (adminLoggedIn) {
+        $adminLoginBox.style.display = 'none';
+        $adminDashboard.style.display = 'block';
+        renderAdminDashboard();
+      } else {
+        $adminLoginBox.style.display = 'block';
+        $adminDashboard.style.display = 'none';
+      }
+    }
+    function closeAdmin() {
+      $adminOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if ($adminBtn) $adminBtn.addEventListener('click', openAdmin);
+    if ($adminBtnMobile) $adminBtnMobile.addEventListener('click', function () {
+      $hamburger.classList.remove('active');
+      $mobileMenu.classList.remove('open');
+      openAdmin();
+    });
+    if ($adminClose) $adminClose.addEventListener('click', closeAdmin);
+    if ($adminOverlay) $adminOverlay.addEventListener('click', function (e) {
+      if (e.target === $adminOverlay) closeAdmin();
+    });
+
+    // Login
+    if ($adminLoginBtn) {
+      $adminLoginBtn.addEventListener('click', function () {
+        if ($adminPassword.value === adminPassword) {
+          adminLoggedIn = true;
+          $adminLoginBox.style.display = 'none';
+          $adminDashboard.style.display = 'block';
+          renderAdminDashboard();
+        } else {
+          $adminLoginError.style.display = 'block';
+          $adminPassword.value = '';
+        }
+      });
+      $adminPassword.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') $adminLoginBtn.click();
+      });
+    }
+
+    // Tabs
+    document.querySelectorAll('.admin-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.admin-tab').forEach(function (t) { t.classList.remove('active'); });
+        document.querySelectorAll('.admin-tab-content').forEach(function (c) { c.classList.remove('active'); });
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.getAttribute('data-tab')).classList.add('active');
+      });
+    });
+
+    function renderAdminDashboard() {
+      // Stats
+      var stats = document.getElementById('adminStats');
+      if (stats) {
+        var totalProducts = products.length;
+        var totalCategories = [];
+        products.forEach(function (p) {
+          if (totalCategories.indexOf(p.category) === -1) totalCategories.push(p.category);
+        });
+        var priceMin = Infinity, priceMax = 0;
+        products.forEach(function (p) {
+          if (p.price < priceMin) priceMin = p.price;
+          if (p.price > priceMax) priceMax = p.price;
+        });
+        stats.innerHTML =
+          '<div class="stat-card"><div class="stat-value">' + totalProducts + '</div><div class="stat-label">Products</div></div>' +
+          '<div class="stat-card"><div class="stat-value">' + totalCategories.length + '</div><div class="stat-label">Categories</div></div>' +
+          '<div class="stat-card"><div class="stat-value">Tk ' + priceMin.toLocaleString() + '</div><div class="stat-label">Min Price</div></div>' +
+          '<div class="stat-card"><div class="stat-value">Tk ' + priceMax.toLocaleString() + '</div><div class="stat-label">Max Price</div></div>' +
+          '<div class="stat-card"><div class="stat-value">' + adminOrders.length + '</div><div class="stat-label">Total Orders</div></div>';
+      }
+
+      // Products list
+      var prodList = document.getElementById('adminProductList');
+      if (prodList) {
+        prodList.innerHTML = '';
+        products.forEach(function (p) {
+          var imgHtml = p.image
+            ? '<img src="' + p.image + '" alt="">'
+            : '<div style="width:48px;height:56px;border-radius:4px;background:' + p.color + '"></div>';
+          prodList.innerHTML +=
+            '<div class="admin-product-row">' +
+              imgHtml +
+              '<div class="ap-name">' + p.name + '</div>' +
+              '<div class="ap-cat">' + p.categoryLabel + '</div>' +
+              '<div class="ap-price">Tk ' + p.price.toLocaleString() + '</div>' +
+            '</div>';
+        });
+      }
+
+      // Orders list
+      var orderList = document.getElementById('adminOrderList');
+      if (orderList) {
+        if (adminOrders.length === 0) {
+          orderList.innerHTML = '<div class="admin-no-data">No orders yet. Orders appear here when customers place them via WhatsApp.</div>';
+        } else {
+          orderList.innerHTML = '';
+          adminOrders.forEach(function (o, i) {
+            var itemsText = o.items.map(function (it) {
+              return it.name + ' x' + it.qty;
+            }).join(', ');
+            orderList.innerHTML +=
+              '<div class="admin-order-row">' +
+                '<div class="order-num">#' + (i + 1) + '</div>' +
+                '<div class="order-items">' + itemsText + '</div>' +
+                '<div class="order-total">Tk ' + o.total.toLocaleString() + '</div>' +
+              '</div>';
+          });
+        }
+      }
+
+      // Settings
+      var waInput = document.getElementById('adminWhatsApp');
+      if (waInput) waInput.value = adminWhatsAppNo === '8801XXXXXXXXX' ? '' : adminWhatsAppNo;
+    }
+
+    // Settings save
+    var adminSaveBtn = document.getElementById('adminSaveSettings');
+    if (adminSaveBtn) {
+      adminSaveBtn.addEventListener('click', function () {
+        var newWA = document.getElementById('adminWhatsApp').value.trim();
+        var newPass = document.getElementById('adminNewPass').value.trim();
+        if (newWA) adminWhatsAppNo = newWA;
+        if (newPass) adminPassword = newPass;
+        showToast('Settings saved!');
+      });
+    }
+
+    // Hook into checkout to log orders
+    var origCheckout = $checkoutBtn.onclick;
+    $checkoutBtn.addEventListener('click', function () {
+      if (cart.length > 0) {
+        var orderItems = cart.map(function (item) {
+          return { name: item.product.name, qty: item.qty, price: item.product.price };
+        });
+        adminOrders.unshift({
+          items: orderItems,
+          total: getCartTotal(),
+          time: new Date().toLocaleString()
+        });
+      }
+    });
+
+    /* ==============================================================
+       INIT
+       ============================================================== */
+    renderProducts('all');
+    updateCartUI();
+    renderReviews();
+
+  })();
+  </script>
+</body>
+</html>
